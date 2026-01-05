@@ -1,0 +1,36 @@
+/**
+ * Fonts
+ * 
+ * Cardo: Serif font with weights 400 (regular) and 700 (bold), with italic variant at 400
+ * Crimson Pro: Serif font with variable weights 200-900, includes italic variants
+ * Great Vibes: Script font with weight 400
+ * Manrope: Sans-serif font with variable weights 200-800, no italic variant
+ * Parisienne: Script font with weight 400
+ */
+@import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Great+Vibes&family=Manrope:wght@200..800&family=Parisienne&display=swap');
+
+:root {
+  --font-cardo: 'Cardo', serif;
+  --font-crimson-pro: 'Crimson Pro', serif;
+  --font-great-vibes: 'Great Vibes', cursive;
+  --font-manrope: 'Manrope', sans-serif;
+  --font-parisienne: 'Parisienne', cursive;
+}
+
+/**
+ * Reset
+ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background: #000;
+  color: #fff;
+  font-family: var(--font-manrope);
+  height: 100%;
+  width: 100%;
+}
