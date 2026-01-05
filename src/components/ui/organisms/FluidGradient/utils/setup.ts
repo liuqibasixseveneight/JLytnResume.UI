@@ -5,6 +5,19 @@ import { hexToRgb } from './hexToRgb';
 import type { SceneState } from './types';
 import { vertexShader, fluidShader, displayShader } from '../shaders';
 
+const getPixelRatio = (width: number, height: number): number => {
+  const basePixelRatio = window.devicePixelRatio || 1;
+  const maxResolution = 1920 * 1080;
+  const screenPixels = width * height;
+  const ratio = Math.min(basePixelRatio, 1);
+  
+  if (screenPixels * ratio * ratio > maxResolution) {
+    return Math.sqrt(maxResolution / screenPixels);
+  }
+  
+  return ratio;
+};
+
 export const getCanvasSize = (
   container: HTMLElement | null
 ): { width: number; height: number } => {
@@ -20,13 +33,14 @@ export const getCanvasSize = (
 
 export const createRenderer = (container: HTMLElement): THREE.WebGLRenderer => {
   const renderer = new THREE.WebGLRenderer({
-    antialias: true,
+    antialias: false,
     alpha: true,
     preserveDrawingBuffer: false,
+    powerPreference: 'high-performance',
   });
 
   const { width, height } = getCanvasSize(container);
-  const pixelRatio = window.devicePixelRatio || 1;
+  const pixelRatio = getPixelRatio(width, height);
 
   renderer.setPixelRatio(pixelRatio);
   renderer.setSize(width, height);
@@ -44,6 +58,7 @@ export const createRenderer = (container: HTMLElement): THREE.WebGLRenderer => {
   canvas.style.pointerEvents = 'auto';
   canvas.style.touchAction = 'none';
   canvas.style.zIndex = '1';
+  canvas.style.willChange = 'contents';
 
   container.appendChild(canvas);
 
@@ -133,7 +148,7 @@ export const initializeScene = (container: HTMLElement): SceneState => {
   const renderer = createRenderer(container);
 
   const { width, height } = getCanvasSize(container);
-  const pixelRatio = window.devicePixelRatio || 1;
+  const pixelRatio = getPixelRatio(width, height);
   const renderWidth = width * pixelRatio;
   const renderHeight = height * pixelRatio;
 
@@ -187,3 +202,4 @@ export const initializeScene = (container: HTMLElement): SceneState => {
     animationId: 0,
   };
 };
+

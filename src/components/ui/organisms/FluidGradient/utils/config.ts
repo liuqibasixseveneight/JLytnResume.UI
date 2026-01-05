@@ -1,0 +1,18 @@
+export const config = {
+  brushSize: 35.0,
+  brushStrength: 2.0,
+  distortionAmount: 1.2,
+  fluidDecay: 0.94,
+  trailLength: 0.8,
+  stopDecay: 0.85,
+  color1: '#16161f',
+  color2: '#232333',
+  color3: '#38384f',
+  color4: '#b0a4cc',
+  color5: '#d0c4e8',
+  color6: '#a4c4d4',
+  color7: '#ddd4ed',
+  color8: '#f0ecff',
+  colorIntensity: 1.0,
+  softness: 1.0,
+};

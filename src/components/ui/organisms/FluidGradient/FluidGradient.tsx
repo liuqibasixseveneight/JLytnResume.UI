@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
-import type { HeroGradientProps } from './types';
-import { HeroGradientWrapper } from './HeroGradient.styles';
+import type { FluidGradientProps } from './types';
+import { FluidGradientWrapper } from './FluidGradient.styles';
 import {
   cleanupScene,
   createAnimationLoop,
@@ -12,7 +12,7 @@ import {
   type SceneState,
 } from './utils';
 
-export const HeroGradient = ({}: HeroGradientProps) => {
+export const FluidGradient = ({}: FluidGradientProps) => {
   const canvasRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<SceneState | null>(null);
 
@@ -30,7 +30,7 @@ export const HeroGradient = ({}: HeroGradientProps) => {
     const canvas = scene.renderer.domElement;
     canvas.addEventListener('mousemove', handleMouseMove, { passive: true });
     canvas.addEventListener('mouseleave', handleMouseLeave);
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize, { passive: true });
 
     animate();
 
@@ -51,12 +51,9 @@ export const HeroGradient = ({}: HeroGradientProps) => {
   }, []);
 
   return (
-    <HeroGradientWrapper>
-      <section className='hero'>
-        <div ref={canvasRef} className='gradient-canvas'></div>
-      </section>
-    </HeroGradientWrapper>
+    <FluidGradientWrapper>
+      <div ref={canvasRef} style={{ width: '100%', height: '100%' }} />
+    </FluidGradientWrapper>
   );
 };
-
 

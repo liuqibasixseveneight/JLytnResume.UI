@@ -19,3 +19,4 @@ export type SceneState = {
   previousFluidTarget: THREE.WebGLRenderTarget;
   renderer: THREE.WebGLRenderer;
 };
+

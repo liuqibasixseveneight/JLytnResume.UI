@@ -1,5 +1,18 @@
 import type { SceneState } from './types';
 
+const getPixelRatio = (width: number, height: number): number => {
+  const basePixelRatio = window.devicePixelRatio || 1;
+  const maxResolution = 1920 * 1080;
+  const screenPixels = width * height;
+  const ratio = Math.min(basePixelRatio, 1);
+
+  if (screenPixels * ratio * ratio > maxResolution) {
+    return Math.sqrt(maxResolution / screenPixels);
+  }
+
+  return ratio;
+};
+
 export const createMouseMoveHandler = (scene: SceneState) => {
   return (e: MouseEvent) => {
     const rect = scene.renderer.domElement.getBoundingClientRect();
@@ -55,27 +68,35 @@ export const createResizeHandler = (
   scene: SceneState,
   container: HTMLElement
 ) => {
+  let timeoutId: number | null = null;
+
   return () => {
-    const rect = container.getBoundingClientRect();
-    const newWidth = rect.width || window.innerWidth;
-    const newHeight = rect.height || window.innerHeight;
-    const newPixelRatio = window.devicePixelRatio || 1;
-    const newRenderWidth = newWidth * newPixelRatio;
-    const newRenderHeight = newHeight * newPixelRatio;
+    if (timeoutId !== null) {
+      cancelAnimationFrame(timeoutId);
+    }
 
-    scene.renderer.setPixelRatio(newPixelRatio);
-    scene.renderer.setSize(newWidth, newHeight);
-    scene.fluidMaterial.uniforms.iResolution.value.set(
-      newRenderWidth,
-      newRenderHeight
-    );
-    scene.displayMaterial.uniforms.iResolution.value.set(
-      newRenderWidth,
-      newRenderHeight
-    );
+    timeoutId = requestAnimationFrame(() => {
+      const rect = container.getBoundingClientRect();
+      const newWidth = rect.width || window.innerWidth;
+      const newHeight = rect.height || window.innerHeight;
+      const newPixelRatio = getPixelRatio(newWidth, newHeight);
+      const newRenderWidth = newWidth * newPixelRatio;
+      const newRenderHeight = newHeight * newPixelRatio;
 
-    scene.fluidTarget1.setSize(newRenderWidth, newRenderHeight);
-    scene.fluidTarget2.setSize(newRenderWidth, newRenderHeight);
-    scene.frameCount = 0;
+      scene.renderer.setPixelRatio(newPixelRatio);
+      scene.renderer.setSize(newWidth, newHeight);
+      scene.fluidMaterial.uniforms.iResolution.value.set(
+        newRenderWidth,
+        newRenderHeight
+      );
+      scene.displayMaterial.uniforms.iResolution.value.set(
+        newRenderWidth,
+        newRenderHeight
+      );
+
+      scene.fluidTarget1.setSize(newRenderWidth, newRenderHeight);
+      scene.fluidTarget2.setSize(newRenderWidth, newRenderHeight);
+      scene.frameCount = 0;
+    });
   };
 };

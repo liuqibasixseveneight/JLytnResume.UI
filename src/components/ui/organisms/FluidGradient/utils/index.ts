@@ -6,21 +6,3 @@ export * from './hexToRgb';
 export * from './setup';
 export * from './types';
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

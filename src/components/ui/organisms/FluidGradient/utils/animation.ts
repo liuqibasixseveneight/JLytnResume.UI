@@ -1,5 +1,3 @@
-import { config } from './config';
-import { hexToRgb } from './hexToRgb';
 import type { SceneState } from './types';
 
 export const createAnimationLoop = (scene: SceneState) => {
@@ -38,30 +36,6 @@ export const createAnimationLoop = (scene: SceneState) => {
     } else {
       mouseUniform.set(0, 0, 0, 0);
     }
-
-    scene.fluidMaterial.uniforms.uBrushSize.value = config.brushSize;
-    scene.fluidMaterial.uniforms.uBrushStrength.value = config.brushStrength;
-    scene.fluidMaterial.uniforms.uFluidDecay.value = config.fluidDecay;
-    scene.fluidMaterial.uniforms.uTrailLength.value = config.trailLength;
-    scene.fluidMaterial.uniforms.uStopDecay.value = config.stopDecay;
-
-    scene.displayMaterial.uniforms.uDistortionAmount.value =
-      config.distortionAmount;
-    scene.displayMaterial.uniforms.uColorIntensity.value =
-      config.colorIntensity;
-    scene.displayMaterial.uniforms.uSoftness.value = config.softness;
-    scene.displayMaterial.uniforms.uColor1.value.set(
-      ...hexToRgb(config.color1)
-    );
-    scene.displayMaterial.uniforms.uColor2.value.set(
-      ...hexToRgb(config.color2)
-    );
-    scene.displayMaterial.uniforms.uColor3.value.set(
-      ...hexToRgb(config.color3)
-    );
-    scene.displayMaterial.uniforms.uColor4.value.set(
-      ...hexToRgb(config.color4)
-    );
 
     scene.fluidMaterial.uniforms.iPreviousFrame.value =
       scene.previousFluidTarget.texture;
