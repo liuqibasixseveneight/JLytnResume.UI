@@ -5,7 +5,7 @@ export const HeaderWrapper = styled.header`
   display: flex;
   justify-content: center;
   left: 0;
-  margin: 4rem auto 0 auto;
+  margin: clamp(1.5rem, 8vh, 4rem) auto 0 auto;
   max-width: 1200px;
   padding: 0 1rem;
   position: absolute;
