@@ -1,26 +1,37 @@
+import { useEffect, useState } from 'react';
+
+import Spline from '@splinetool/react-spline';
+
 import { FluidGradient, Header } from '../../ui';
 import { HomeWrapper } from './Home.styles';
 
 export const Home = () => {
+  const [showSpline, setShowSpline] = useState(false);
+
+  useEffect(() => {
+    const initSpline = () => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setShowSpline(true);
+        });
+      });
+    };
+
+    const timer = setTimeout(initSpline, 200);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <HomeWrapper>
       <FluidGradient />
       <Header />
 
-      <h1
-        style={{
-          color: '#000',
-          fontWeight: '800',
-          position: 'absolute',
-          top: 'calc(50% - 4rem)',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          fontSize: '120rem',
-          fontFamily: 'var(--font-great-vibes)',
-          userSelect: 'none',
-          zIndex: '1',
-        }}
-      >{`X`}</h1>
+      {showSpline && (
+        <div style={{ position: 'absolute', width: '100%', height: '100%' }}>
+          <Spline scene="https://prod.spline.design/l3BuZOVIbZFnsYnP/scene.splinecode" />
+        </div>
+      )}
 
       <h1
         style={{
@@ -39,6 +50,9 @@ export const Home = () => {
           gap: '0.2em',
           zIndex: '2',
         }}
+        data-speed='1.07'
+        data-lag='0.006'
+        data-delay='0.1'
       >
         <span style={{ fontWeight: 600 }}>Joshua</span>
         <span

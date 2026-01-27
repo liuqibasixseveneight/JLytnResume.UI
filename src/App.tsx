@@ -1,10 +1,15 @@
-import { Home, Intro } from './components/pages';
+import { Contact, Footer, Home, Intro, Projects } from './components/pages';
 
-export const App = () => {
+const AppComponent = () => {
   return (
     <>
       <Home />
       <Intro />
+      <Projects />
+      <Contact />
+      <Footer />
     </>
   );
 };
+
+export const App = AppComponent;

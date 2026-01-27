@@ -1,0 +1,266 @@
+---
+description: Technology stack, dependency versions, and best practices
+globs: **/*
+alwaysApply: true
+---
+
+# Technology Stack
+
+This document outlines the application's technology stack, dependency versions, and best practices for each.
+
+## Core Framework & Runtime
+
+### React 19.2.0
+
+**Version Notes:**
+- React 19 is the latest major version with significant improvements
+- Introduces new features like Actions, useOptimistic, useFormStatus
+- Improved concurrent rendering and automatic batching
+- Better TypeScript support
+
+**Best Practices:**
+- Use React 19's new hooks (`useActionState`, `useOptimistic`, `useFormStatus`) for form handling
+- Leverage automatic batching for better performance
+- Use `use()` hook for async data fetching
+- Prefer function components with hooks over class components
+- Use `useMemo` and `useCallback` judiciously (React 19 optimizes more automatically)
+
+**Breaking Changes:**
+- `ref` prop is now a regular prop (not special)
+- Context API changes - ensure proper provider usage
+- Some deprecated APIs removed
+
+### React DOM 19.2.0
+
+- Must match React version exactly
+- Includes improved hydration and error handling
+
+## Build Tools & Development
+
+### Vite 7.2.4
+
+**Version Notes:**
+- Latest major version with improved performance
+- Better HMR (Hot Module Replacement)
+- Enhanced plugin ecosystem
+
+**Best Practices:**
+- Use `@vitejs/plugin-react-swc` for faster builds (already configured)
+- Leverage Vite's native ESM support
+- Use environment variables with `import.meta.env`
+- Configure path aliases in `vite.config.ts` if needed
+- Use Vite's built-in CSS handling (no need for additional loaders)
+
+**Configuration:**
+- React SWC plugin enabled for faster compilation
+- ESM module system (`type: "module"` in package.json)
+
+### TypeScript 5.9.3
+
+**Version Notes:**
+- Latest stable version with improved type inference
+- Better performance and error messages
+- Enhanced support for modern JavaScript features
+
+**Best Practices:**
+- Use strict mode (enabled in `tsconfig.app.json`)
+- Leverage `noUnusedLocals` and `noUnusedParameters` (enabled)
+- Use `verbatimModuleSyntax` for better ESM support
+- Prefer type inference over explicit types when possible
+- Use `satisfies` operator for type-safe configurations
+
+**Configuration Highlights:**
+- Target: ES2022
+- Module: ESNext with bundler resolution
+- Strict mode enabled
+- Unused variable/parameter checks enabled
+
+### ESLint 9.39.1
+
+**Version Notes:**
+- Uses flat config format (new configuration system)
+- Better performance and plugin support
+
+**Best Practices:**
+- Flat config format in `eslint.config.js` (not `.eslintrc`)
+- TypeScript ESLint integration enabled
+- React Hooks rules enforced
+- React Refresh plugin for Vite HMR
+
+**Plugins:**
+- `@eslint/js` - Core ESLint rules
+- `typescript-eslint` - TypeScript-specific rules
+- `eslint-plugin-react-hooks` - React Hooks linting
+- `eslint-plugin-react-refresh` - Vite React Refresh support
+
+## Styling
+
+### Styled Components 6.1.19
+
+**Version Notes:**
+- Latest major version with improved performance
+- Better TypeScript support
+- Enhanced server-side rendering
+
+**Best Practices:**
+- Co-locate styles with components in `ComponentName.styles.ts` files
+- Use TypeScript for styled component props
+- Leverage theme provider for global styles (if needed)
+- Use `css` helper for complex styles
+- Avoid inline styles when styled-components can handle it
+
+**Pattern:**
+```typescript
+// ComponentName.styles.ts
+import styled from 'styled-components';
+
+export const StyledComponent = styled.div`
+  // styles here
+`;
+```
+
+## 3D Graphics & Animation
+
+### Three.js 0.182.0
+
+**Version Notes:**
+- Modern version with improved WebGL support
+- Better TypeScript definitions
+- Enhanced performance optimizations
+
+**Best Practices:**
+- Always dispose of geometries, materials, and textures
+- Use `useFrame` from `@react-three/fiber` if migrating to React Three Fiber
+- Clean up resources in useEffect cleanup
+- Use `requestAnimationFrame` for animations
+- Leverage Three.js's built-in optimizations (instancing, LOD, etc.)
+
+**Usage in Project:**
+- Used in `FluidGradient` component for WebGL effects
+- Ensure proper cleanup in component unmount
+
+### GSAP 3.14.2
+
+**Version Notes:**
+- Stable version with excellent performance
+- Comprehensive animation library
+
+**Best Practices:**
+- Use `@gsap/react` for React integration (already installed)
+- Clean up animations in useEffect cleanup
+- Use `gsap.context()` for easier cleanup
+- Prefer `gsap.to()` and `gsap.from()` over `gsap.fromTo()` when possible
+- Use `ScrollTrigger` for scroll-based animations
+
+**React Integration:**
+```typescript
+import { useGSAP } from '@gsap/react';
+
+useGSAP(() => {
+  // GSAP animations
+}, { scope: ref });
+```
+
+### Lenis 1.3.17
+
+**Version Notes:**
+- Smooth scrolling library
+- Lightweight and performant
+
+**Best Practices:**
+- Initialize in `useEffect` with proper cleanup
+- Configure options for optimal performance
+- Use with GSAP ScrollTrigger for enhanced scroll animations
+- Consider accessibility (respect `prefers-reduced-motion`)
+
+## Routing
+
+### React Router DOM 7.11.0
+
+**Version Notes:**
+- Latest major version with improved data loading
+- Better TypeScript support
+- Enhanced error boundaries
+
+**Best Practices:**
+- Use data loaders for route-level data fetching
+- Implement proper error boundaries
+- Use `createBrowserRouter` for modern routing
+- Leverage route-level code splitting
+- Use `useLoaderData` and `useActionData` hooks
+
+**Note:** Currently installed but routing implementation TBD
+
+## Dependency Management
+
+### Version Ranges
+
+- `^` (caret) - Allows compatible version updates (major version locked)
+- `~` (tilde) - Allows patch updates only (used for TypeScript)
+
+### Best Practices
+
+1. **Keep Dependencies Updated:**
+   - Run `npm outdated` regularly
+   - Update dependencies incrementally
+   - Test thoroughly after updates
+
+2. **Security:**
+   - Run `npm audit` regularly
+   - Fix high/critical vulnerabilities immediately
+   - Use `npm audit fix` for automatic fixes when safe
+
+3. **Lock Files:**
+   - Always commit `package-lock.json`
+   - Ensures consistent installs across environments
+
+4. **Version Pinning:**
+   - Consider pinning exact versions for production
+   - Use ranges (`^`) for development flexibility
+
+5. **Dependency Review:**
+   - Remove unused dependencies
+   - Review bundle size impact
+   - Consider alternatives for heavy dependencies
+
+## Development Scripts
+
+```json
+{
+  "dev": "vite",              // Development server
+  "build": "tsc -b && vite build",  // Type check + build
+  "lint": "eslint .",         // Lint code
+  "preview": "vite preview"   // Preview production build
+}
+```
+
+## Module System
+
+- **ESM (ES Modules)** - `"type": "module"` in package.json
+- All imports use ESM syntax
+- No CommonJS require() statements
+
+## Browser Support
+
+- Target: ES2022
+- Modern browsers with ES2022 support
+- No IE11 support (expected)
+
+## Important Notes
+
+1. **React 19 Compatibility:**
+   - Ensure all third-party libraries support React 19
+   - Some older libraries may need updates or alternatives
+
+2. **TypeScript Strict Mode:**
+   - Strict mode enabled - expect more type errors
+   - This improves code quality and catches bugs early
+
+3. **Vite HMR:**
+   - Fast refresh enabled via React Refresh plugin
+   - Component state preserved during development
+
+4. **Build Performance:**
+   - SWC compiler for faster builds
+   - ESM for better tree-shaking
+   - Optimize bundle size in production builds

@@ -15,7 +15,7 @@ export const HeaderWrapper = styled.header`
 `;
 
 export const HeaderBioText = styled.div`
-  font-size: clamp(1.5rem, 4vw + 1rem, 4rem);
+  font-size: clamp(1.5rem, 4vw + 1rem, 3rem);
   mix-blend-mode: difference;
   text-align: center;
   user-select: none;

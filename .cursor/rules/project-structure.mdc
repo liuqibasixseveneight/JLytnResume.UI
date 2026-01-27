@@ -1,0 +1,184 @@
+---
+description: Project directory structure and important files organization
+globs: **/*
+alwaysApply: true
+---
+
+# Project Structure
+
+This document outlines the directory structure and important files in the JLytnResume.UI project.
+
+## Root Directory
+
+```
+PROJECT_ROOT/
+├── .cursor/
+│   └── rules/          # Cursor rules documentation
+├── node_modules/       # Dependencies
+├── public/             # Static assets
+│   └── vite.svg
+├── src/                # Source code
+├── eslint.config.js    # ESLint configuration
+├── index.html          # HTML entry point
+├── package.json        # Dependencies and scripts
+├── tsconfig.json       # TypeScript configuration
+├── tsconfig.app.json   # App-specific TypeScript config
+├── tsconfig.node.json  # Node-specific TypeScript config
+└── vite.config.ts      # Vite build configuration
+```
+
+## Source Directory (`src/`)
+
+### Entry Points
+
+- `main.tsx` - Application entry point
+- `App.tsx` - Root component
+- `index.css` - Global styles
+
+### Component Organization
+
+The project follows **Atomic Design** pattern with additional page-level components:
+
+```
+src/components/
+├── pages/              # Page-level components
+│   ├── Home/          # Home page component
+│   │   ├── Home.tsx
+│   │   ├── Home.styles.ts
+│   │   └── index.ts
+│   ├── Intro/         # Introduction page component
+│   │   ├── Intro.tsx
+│   │   ├── Intro.styles.ts
+│   │   ├── types.ts
+│   │   └── index.ts
+│   └── index.ts       # Pages barrel export
+└── ui/                # Reusable UI components
+    ├── atoms/         # Basic building blocks
+    │   └── index.ts
+    ├── molecules/     # Simple component groups
+    │   └── index.ts
+    ├── organisms/     # Complex components
+    │   ├── FluidGradient/  # WebGL fluid gradient effect
+    │   │   ├── FluidGradient.tsx
+    │   │   ├── FluidGradient.styles.ts
+    │   │   ├── shaders.ts
+    │   │   ├── types.ts
+    │   │   ├── index.ts
+    │   │   └── utils/  # Component-specific utilities
+    │   │       ├── animation.ts
+    │   │       ├── cleanup.ts
+    │   │       ├── config.ts
+    │   │       ├── handlers.ts
+    │   │       ├── hexToRgb.ts
+    │   │       ├── setup.ts
+    │   │       ├── types.ts
+    │   │       └── index.ts
+    │   ├── Header/    # Site header component
+    │   │   ├── Header.tsx
+    │   │   ├── Header.styles.ts
+    │   │   ├── types.ts
+    │   │   └── index.ts
+    │   └── index.ts
+    └── index.ts       # UI components barrel export
+```
+
+### Labs Directory
+
+- `src/labs/` - Experimental code and prototypes (currently empty)
+
+## Component File Naming Conventions
+
+### Standard Component Structure
+
+Each component directory should contain:
+
+1. **Component file**: `ComponentName.tsx` - Main component implementation
+2. **Styles file**: `ComponentName.styles.ts` - Styled-components styles
+3. **Types file**: `types.ts` - TypeScript type definitions (if needed)
+4. **Index file**: `index.ts` - Barrel export for clean imports
+5. **Utils directory**: `utils/` - Component-specific utilities (for complex components)
+
+### Example Structure
+
+```
+ComponentName/
+├── ComponentName.tsx
+├── ComponentName.styles.ts
+├── types.ts          # Optional
+├── index.ts
+└── utils/            # Optional, for complex components
+    ├── helper.ts
+    └── index.ts
+```
+
+## Key Technologies
+
+- **React 19** - UI framework
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
+- **Styled Components** - CSS-in-JS styling
+- **Three.js** - 3D graphics (used in FluidGradient)
+- **GSAP** - Animation library
+- **Lenis** - Smooth scrolling
+- **React Router** - Routing (installed but usage TBD)
+
+## Important Configuration Files
+
+- `vite.config.ts` - Vite build configuration with React SWC plugin
+- `tsconfig.json` - Base TypeScript configuration
+- `tsconfig.app.json` - Application-specific TypeScript settings
+- `tsconfig.node.json` - Node.js-specific TypeScript settings
+- `eslint.config.js` - ESLint rules and configuration
+
+## Import Patterns
+
+Use barrel exports (`index.ts`) for clean imports:
+
+```typescript
+// Good: Use barrel exports
+import { Home, Intro } from './components/pages';
+import { FluidGradient, Header } from './components/ui/organisms';
+
+// Avoid: Direct file imports
+import { Home } from './components/pages/Home/Home';
+```
+
+## Styling Convention
+
+- Use `styled-components` for component styling
+- Separate styles into `ComponentName.styles.ts` files
+- Keep styles co-located with components
+- **Always order CSS properties alphabetically** within each styled component
+- **Exception**: Related CSS properties should be grouped together (e.g., `height` and `min-height`, `margin` and `margin-top`, `padding` and `padding-left`)
+
+**Example:**
+```typescript
+// Good: Alphabetically ordered with related properties grouped
+export const StyledComponent = styled.div`
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 4rem;
+  width: 100%;
+`;
+
+// Bad: Not alphabetically ordered
+export const StyledComponent = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 4rem;
+  justify-content: center;
+`;
+```
+
+## Development Guidelines
+
+1. **New Components**: Place in appropriate atomic level (atoms/molecules/organisms) or pages
+2. **Experiments**: Use `src/labs/` for experimental code
+3. **Exports**: Always create `index.ts` barrel exports for clean imports
+4. **Types**: Co-locate types in `types.ts` when component-specific
+5. **Utilities**: Place component-specific utilities in `utils/` subdirectory

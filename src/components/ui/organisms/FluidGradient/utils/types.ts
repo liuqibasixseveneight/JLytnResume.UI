@@ -20,3 +20,7 @@ export type SceneState = {
   renderer: THREE.WebGLRenderer;
 };
 
+
+
+
+
