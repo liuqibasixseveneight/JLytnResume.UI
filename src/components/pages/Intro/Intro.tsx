@@ -31,16 +31,17 @@ export const Intro = ({}: IntroProps) => {
         },
       });
 
-      gsap.set(words, { opacity: 0, y: 50 });
+      gsap.set(words, { opacity: 0, y: 24 });
 
       tl.to(words, {
         opacity: 1,
         y: 0,
-        stagger: 0.03,
-        ease: 'power2.out',
+        duration: 1,
+        ease: 'power3.out',
+        stagger: 0.02,
       });
     },
-    { scope: headingRef }
+    { scope: headingRef },
   );
 
   const text =
