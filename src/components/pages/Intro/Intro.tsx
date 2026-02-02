@@ -22,26 +22,32 @@ export const Intro = ({}: IntroProps) => {
 
       const words = headingRef.current.querySelectorAll('.intro-word');
 
+      gsap.set(words, {
+        opacity: 0,
+        scale: 0.98,
+        transformOrigin: 'center bottom',
+        y: 16,
+      });
+
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: headingRef.current,
-          start: 'top 80%',
-          end: '+=100%',
+          end: 'bottom 15%',
           scrub: true,
+          start: 'top 85%',
+          trigger: headingRef.current,
         },
       });
 
-      gsap.set(words, { opacity: 0, y: 24 });
-
       tl.to(words, {
-        opacity: 1,
-        y: 0,
         duration: 1,
-        ease: 'power3.out',
-        stagger: 0.02,
+        ease: 'power2.out',
+        opacity: 1,
+        scale: 1,
+        stagger: 0.04,
+        y: 0,
       });
     },
-    { scope: headingRef },
+    { scope: headingRef }
   );
 
   const text =
