@@ -3,7 +3,7 @@ import type { HeaderProps } from './types';
 
 export const Header = ({}: HeaderProps) => {
   return (
-    <HeaderWrapper>
+    <HeaderWrapper style={{ color: '#fff', mixBlendMode: 'difference' }}>
       <HeaderBioText data-speed='1.03' data-lag='0.007' data-delay='0.1'>
         A{' '}
         <span style={{ fontStyle: 'italic', fontWeight: 400 }}>

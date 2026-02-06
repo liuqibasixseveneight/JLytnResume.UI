@@ -1,14 +1,12 @@
-import { Contact, Footer, Home, Intro, Projects } from './components/pages';
+import { Route, Routes } from 'react-router-dom';
+
+import { Home } from './components/pages';
 
 const AppComponent = () => {
   return (
-    <>
-      <Home />
-      <Intro />
-      <Projects />
-      <Contact />
-      <Footer />
-    </>
+    <Routes>
+      <Route element={<Home />} path='/' />
+    </Routes>
   );
 };
 

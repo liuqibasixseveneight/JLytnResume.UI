@@ -9,6 +9,7 @@ import {
 
 export const ProjectContent = ({
   buttonText,
+  className,
   description,
   imageAlt,
   imageSrc,
@@ -16,7 +17,7 @@ export const ProjectContent = ({
   tags,
 }: ProjectContentProps) => {
   return (
-    <ProjectContentWrapper>
+    <ProjectContentWrapper className={className}>
       <ProjectImage alt={imageAlt} src={imageSrc} variant='thumbnail' />
       <ProjectTags style={{ marginTop: '1rem' }} tags={tags} />
       <ProjectDescription description={description} />
