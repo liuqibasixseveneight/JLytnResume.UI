@@ -4,6 +4,7 @@ export const projectsData: ProjectDataItem[] = [
   {
     id: 0,
     name: 'cluedin',
+    projectName: 'CluedIn',
     buttonText: 'Find out more',
     contentImageAlt: 'CluedIn',
     contentImageSrc:
@@ -14,11 +15,33 @@ export const projectsData: ProjectDataItem[] = [
     displayImageSrc:
       'https://images.unsplash.com/photo-1642516303080-431f6681f864?q=80&w=2180&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     heading: 'CluedIn',
+    industry: 'Master Data Management',
     tags: ['WEB', 'DEVELOPMENT', 'DATA', 'PLATFORM'],
+    technologies: [
+      { name: 'React', url: 'https://react.dev/' },
+      { name: 'TypeScript', url: 'https://www.typescriptlang.org/' },
+      {
+        name: 'HTML',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML',
+      },
+      { name: 'CSS', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS' },
+      {
+        name: 'JavaScript',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+      },
+      { name: 'GraphQL', url: 'https://graphql.org/' },
+      { name: 'Styled Components', url: 'https://styled-components.com/' },
+      { name: 'Fluent UI', url: 'https://fluent2.microsoft.design/' },
+      { name: 'D3', url: 'https://d3js.org/' },
+    ],
+    role: 'Frontend Developer',
+    whatIDid:
+      'Built and maintained front-end features for the MDM CluedIn platform UI using React and TypeScript. Integrated with GraphQL APIs, implemented data visualisations with D3, and contributed to the design system with Fluent UI and Styled Components. Worked with the team on accessibility, performance improvements, bug fixes, and new feature development.',
   },
   {
     id: 1,
     name: 'dedalus',
+    projectName: 'Dedalus',
     buttonText: 'Find out more',
     contentImageAlt: 'Dedalus',
     contentImageSrc:
@@ -29,11 +52,34 @@ export const projectsData: ProjectDataItem[] = [
     displayImageSrc:
       'https://images.unsplash.com/photo-1742774101918-7a6120ff2b36?q=80&w=2231&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     heading: 'Dedalus',
+    industry: 'Healthcare',
     tags: ['WEB', 'DEVELOPMENT', 'DATA', 'PLATFORM'],
+    technologies: [
+      { name: 'React', url: 'https://react.dev/' },
+      { name: 'TypeScript', url: 'https://www.typescriptlang.org/' },
+      {
+        name: 'HTML',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML',
+      },
+      { name: 'CSS', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS' },
+      {
+        name: 'JavaScript',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+      },
+      { name: 'Styled Components', url: 'https://styled-components.com/' },
+      {
+        name: 'PWA',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps',
+      },
+    ],
+    role: 'Frontend Developer',
+    whatIDid:
+      'Contributed to the development of two clinical healthcare platforms: OneResponse, a Progressive Web App used by ambulance services and paramedics to support patient treatment and structured documentation in the field, and OneED, an emergency department system designed to streamline hospital-based treatment workflows and clinical records. Built responsive, accessible UIs using React and Styled Components, while ensuring compliance with NHS guidelines, policies, and clinical safety standards. Collaborated directly with paramedics and clinical staff to align the applications with real-world workflows and user expectations, and worked closely with backend and product teams to define API contracts and optimise UX flows.',
   },
   {
     id: 2,
-    name: 'dxcTechnology',
+    name: 'dxc-technology',
+    projectName: 'DXC Technology',
     buttonText: 'Find out more',
     contentImageAlt: 'DXC Technology',
     contentImageSrc:
@@ -44,26 +90,71 @@ export const projectsData: ProjectDataItem[] = [
     displayImageSrc:
       'https://images.unsplash.com/photo-1659469378400-eb508bdb2c88?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     heading: 'DXC Technology',
+    industry: 'Healthcare',
     tags: ['WEB', 'DEVELOPMENT', 'DATA', 'PLATFORM'],
+    technologies: [
+      { name: 'React', url: 'https://react.dev/' },
+      { name: 'TypeScript', url: 'https://www.typescriptlang.org/' },
+      {
+        name: 'HTML',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML',
+      },
+      { name: 'CSS', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS' },
+      {
+        name: 'JavaScript',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+      },
+      { name: 'Styled Components', url: 'https://styled-components.com/' },
+      {
+        name: 'PWA',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps',
+      },
+    ],
+    role: 'Software Developer',
+    whatIDid:
+      'Led frontend proof of concept development for two clinical healthcare platforms: OneResponse (ambulance and paramedic use) and OneED (hospital emergency departments). Developed early-stage React-based prototypes to validate treatment workflows, structured documentation, and PWA offline functionality. Collaborated directly with paramedics and clinical stakeholders to iterate rapidly on real-world workflows, while embedding NHS guideline and clinical safety considerations from the outset.',
   },
   {
     id: 3,
-    name: 'myPortfolio',
+    name: 'joshua-layton',
+    projectName: 'Joshua Layton',
     buttonText: 'Find out more',
-    contentImageAlt: 'My Portfolio',
+    contentImageAlt: 'Joshua Layton - Portfolio',
     contentImageSrc:
       'https://images.unsplash.com/photo-1576000613930-4c17d9948918?q=80&w=1771&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     description:
       'My portfolio is a collection of work shaped by over six years of experience building thoughtful, high-quality web experiences. It features projects created with React and TypeScript, grounded in strong HTML, CSS, and JavaScript fundamentals, and brought to life with tools like Tailwind, GSAP, and Spline. Each piece reflects my focus on clarity, interaction, and craft, and my enjoyment in turning ideas into engaging, polished experiences on the web.',
-    displayImageAlt: 'My Portfolio',
+    displayImageAlt: 'Joshua Layton - Portfolio',
     displayImageSrc:
       'https://images.unsplash.com/photo-1576079289400-c64c9c07b1f0?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    heading: 'My Portfolio',
-    tags: ['WEB', 'DEVELOPMENT', 'DATA', 'PLATFORM'],
+    heading: 'Joshua Layton',
+    industry: 'Personal Portfolio',
+    tags: ['WEB', 'DEVELOPMENT', 'PORTFOLIO', 'PROJECTS'],
+    technologies: [
+      { name: 'React', url: 'https://react.dev/' },
+      { name: 'TypeScript', url: 'https://www.typescriptlang.org/' },
+      {
+        name: 'HTML',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML',
+      },
+      { name: 'CSS', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS' },
+      {
+        name: 'JavaScript',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+      },
+      { name: 'Styled Components', url: 'https://styled-components.com/' },
+      { name: 'Vite', url: 'https://vite.dev/' },
+      { name: 'GSAP', url: 'https://gsap.com/' },
+      { name: 'Spline', url: 'https://spline.design/' },
+    ],
+    role: 'Developer',
+    whatIDid:
+      'Designed and developed my personal portfolio website to showcase selected projects, technical capabilities, and professional experience. Focused on performance, accessibility, and responsive design to ensure a seamless experience across devices. Implemented clean UI patterns, smooth interactions, and clear content structure to effectively communicate both technical depth and product thinking, while maintaining full control over branding and presentation.',
   },
   {
     id: 4,
-    name: 'cvHost',
+    name: 'cv-host',
+    projectName: 'CV Host',
     buttonText: 'Find out more',
     contentImageAlt: 'CV Host',
     contentImageSrc:
@@ -74,6 +165,36 @@ export const projectsData: ProjectDataItem[] = [
     displayImageSrc:
       'https://images.unsplash.com/photo-1663970206579-c157cba7edda?q=80&w=1228&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     heading: 'CV Host',
+    industry: 'Human Resources & Recruitment',
     tags: ['WEB', 'DEVELOPMENT', 'DATA', 'PLATFORM'],
+    technologies: [
+      { name: 'React', url: 'https://react.dev/' },
+      { name: 'TypeScript', url: 'https://www.typescriptlang.org/' },
+      {
+        name: 'HTML',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/HTML',
+      },
+      { name: 'CSS', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS' },
+      {
+        name: 'JavaScript',
+        url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+      },
+      { name: 'Styled Components', url: 'https://styled-components.com/' },
+      { name: 'Vite', url: 'https://vite.dev/' },
+      { name: 'Node.js', url: 'https://nodejs.org/' },
+      { name: 'Prisma', url: 'https://www.prisma.io/' },
+      { name: 'GraphQL', url: 'https://graphql.org/' },
+      { name: 'Chakra UI', url: 'https://chakra-ui.com/' },
+    ],
+    role: 'Founder & Developer',
+    whatIDid:
+      'Developed a personal project called CV Host, a web application that enables users to build, manage, and host their own CV/resumé online. Designed and implemented an intuitive interface for creating and editing structured CV content, with secure account-based storage for easy ongoing updates. Built sharing functionality to allow users to generate accessible links for employers or recruiters, making their CV instantly viewable and consistently up to date.',
   },
 ];
+
+export const getProjectByName = (
+  name: string | undefined,
+): ProjectDataItem | null => {
+  if (name == null || name === '') return null;
+  return projectsData.find((p) => p.name === name) ?? null;
+};

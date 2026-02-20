@@ -1,3 +1,8 @@
+export type ProjectTechnology = {
+  name: string;
+  url: string;
+};
+
 export type ProjectDataItem = {
   buttonText?: string;
   contentImageAlt: string;
@@ -7,9 +12,15 @@ export type ProjectDataItem = {
   displayImageSrc: string;
   heading: string;
   id: number;
+  industry: string;
+  linkUrl?: string;
   name: string;
   onButtonClick?: () => void;
+  projectName: string;
+  role?: string;
   tags: string[];
+  technologies?: ProjectTechnology[];
+  whatIDid?: string;
 };
 
 export type ProjectsProps = {

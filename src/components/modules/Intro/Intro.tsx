@@ -1,8 +1,3 @@
-import { useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
-
 import {
   IntroInnerWrapper,
   IntroWrapper,
@@ -11,45 +6,7 @@ import {
 } from './Intro.styles';
 import type { IntroProps } from './types';
 
-gsap.registerPlugin(ScrollTrigger);
-
 export const Intro = ({}: IntroProps) => {
-  const headingRef = useRef<HTMLHeadingElement>(null);
-
-  useGSAP(
-    () => {
-      if (!headingRef.current) return;
-
-      const words = headingRef.current.querySelectorAll('.intro-word');
-
-      gsap.set(words, {
-        opacity: 0,
-        scale: 0.98,
-        transformOrigin: 'center bottom',
-        y: 16,
-      });
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          end: 'bottom 15%',
-          scrub: true,
-          start: 'top 85%',
-          trigger: headingRef.current,
-        },
-      });
-
-      tl.to(words, {
-        duration: 1,
-        ease: 'power2.out',
-        opacity: 1,
-        scale: 1,
-        stagger: 0.04,
-        y: 0,
-      });
-    },
-    { scope: headingRef }
-  );
-
   const text =
     "I'm a Frontend Developer with over six years of experience designing and building scalable, high-quality web experiences with a focus on clarity, interaction, and craft.";
 
@@ -60,7 +17,6 @@ export const Intro = ({}: IntroProps) => {
     <IntroWrapper>
       <IntroInnerWrapper>
         <IntroHeading
-          ref={headingRef}
           data-speed='1.04'
           data-lag='0.008'
           data-delay='0.11'

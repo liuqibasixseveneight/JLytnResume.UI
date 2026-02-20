@@ -27,13 +27,7 @@ export const Hero = () => {
       <Header />
 
       {showSpline && (
-        <div
-          style={{
-            inset: 0,
-            position: 'absolute',
-            zIndex: 1,
-          }}
-        >
+        <div style={{ inset: 0, position: 'absolute', zIndex: 1 }}>
           <Spline scene='https://prod.spline.design/LgCvlbGqUjH5hTlG/scene.splinecode' />
         </div>
       )}

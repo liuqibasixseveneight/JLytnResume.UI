@@ -1,12 +1,14 @@
 import { ProjectTagsWrapper, ProjectTagSeparator } from './ProjectTags.styles';
 import type { ProjectTagsProps } from './types';
 
-export const ProjectTags = ({ style, tags }: ProjectTagsProps) => {
+export const ProjectTags = ({ disableParallax, style, tags }: ProjectTagsProps) => {
   return (
     <ProjectTagsWrapper
-      data-speed='1.005'
-      data-lag='0.0105'
-      data-delay='0.125'
+      {...(!disableParallax && {
+        'data-delay': '0.125',
+        'data-lag': '0.0105',
+        'data-speed': '1.005',
+      })}
       style={style}
     >
       {tags.flatMap((tag, index) => [
